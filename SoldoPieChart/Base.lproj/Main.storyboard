@@ -51,7 +51,7 @@
                                     <constraint firstItem="BcE-11-y4O" firstAttribute="top" secondItem="va5-Db-BIu" secondAttribute="top" constant="8" id="Pm4-Qg-tZe"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CH9-o9-XBR">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CH9-o9-XBR">
                                 <rect key="frame" x="0.0" y="303" width="600" height="297"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -59,10 +59,10 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TZi-0Q-1nB" id="B73-51-dzz">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="53"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e0W-l4-OK8">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e0W-l4-OK8">
                                                     <rect key="frame" x="8" y="10" width="33" height="33"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="e0W-l4-OK8" secondAttribute="height" multiplier="1:1" id="FYp-d3-hmX"/>
@@ -74,7 +74,7 @@
                                                     <color key="textColor" red="0.3411764705882353" green="0.40392156862745099" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUW-hd-V8Y">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUW-hd-V8Y">
                                                     <rect key="frame" x="49" y="27" width="42" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="42" id="iU6-fn-LFE"/>
@@ -83,15 +83,22 @@
                                                     <color key="textColor" red="0.58984375" green="0.58984375" blue="0.58984375" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSh-RU-QSi">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSh-RU-QSi">
                                                     <rect key="frame" x="49" y="8" width="37" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                                     <color key="textColor" red="0.51764705882352946" green="0.56470588235294117" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="URE-ol-AHT">
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="URE-ol-AHT">
                                                     <rect key="frame" x="88" y="35" width="240" height="2"/>
                                                 </progressView>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BSp-L2-CdK" userLabel="Separator">
+                                                    <rect key="frame" x="49" y="52" width="551" height="1"/>
+                                                    <color key="backgroundColor" red="0.81712205500000001" green="0.81712205500000001" blue="0.81712205500000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="8j4-hA-UYK"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="URE-ol-AHT" firstAttribute="width" secondItem="B73-51-dzz" secondAttribute="width" multiplier="2:5" id="1NB-IQ-iAh"/>
@@ -101,11 +108,14 @@
                                                 <constraint firstItem="OUW-hd-V8Y" firstAttribute="leading" secondItem="e0W-l4-OK8" secondAttribute="trailing" constant="8" id="P32-xM-nAH"/>
                                                 <constraint firstItem="R0B-dh-yf4" firstAttribute="centerY" secondItem="B73-51-dzz" secondAttribute="centerY" id="PF3-6A-SuQ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="e0W-l4-OK8" secondAttribute="bottom" constant="2" id="PpT-We-4uw"/>
+                                                <constraint firstItem="BSp-L2-CdK" firstAttribute="leading" secondItem="OUW-hd-V8Y" secondAttribute="leading" id="QsJ-Oi-HDT"/>
+                                                <constraint firstAttribute="bottom" secondItem="BSp-L2-CdK" secondAttribute="bottom" id="Ueb-u6-JPW"/>
                                                 <constraint firstItem="URE-ol-AHT" firstAttribute="leading" secondItem="B73-51-dzz" secondAttribute="leadingMargin" constant="80" id="XMT-OW-HQ9"/>
                                                 <constraint firstItem="KSh-RU-QSi" firstAttribute="top" secondItem="B73-51-dzz" secondAttribute="topMargin" id="a0q-ie-3nP"/>
                                                 <constraint firstItem="KSh-RU-QSi" firstAttribute="leading" secondItem="e0W-l4-OK8" secondAttribute="trailing" constant="8" id="aHv-cu-wEf"/>
                                                 <constraint firstItem="URE-ol-AHT" firstAttribute="centerY" secondItem="OUW-hd-V8Y" secondAttribute="centerY" id="iq1-bn-xc6"/>
                                                 <constraint firstItem="OUW-hd-V8Y" firstAttribute="bottom" secondItem="B73-51-dzz" secondAttribute="bottomMargin" id="sug-za-BQY"/>
+                                                <constraint firstAttribute="trailing" secondItem="BSp-L2-CdK" secondAttribute="trailing" id="tVS-t6-6V9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
