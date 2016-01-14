@@ -9,12 +9,45 @@
 import UIKit
 
 class PieView: UIView {
+    weak var amountLabel: UILabel!
     var dataSource: ChartDataSource?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        addAmountLabel()
+    }
+    
+    func addAmountLabel() {
+        let label = UILabel(frame: CGRectZero)
+        self.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
         
+        self.addConstraints([
+            NSLayoutConstraint(item: label, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: label, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
+        ])
+        
+        self.amountLabel = label
+    }
+    
     override func layoutSublayersOfLayer(layer: CALayer) {
         if let data = self.dataSource {
             addLayers(data)
+            configureAmountLabel(data)
+            amountLabel.layoutIfNeeded()
         }
+    }
+    
+    func configureAmountLabel(data: ChartDataSource) {
+        amountLabel.textColor = Colors.Grey.uiColor
+        amountLabel.attributedText = data
+            .segments
+            .map { $0.amount }
+            .reduce(0.0) { total, amount in
+                total + amount
+            }
+            |> currencyFormat
+            |> totalAmountFormat
     }
     
     func addLayers(data: ChartDataSource) {
@@ -27,7 +60,7 @@ class PieView: UIView {
     
     func slice(data: SegmentData) -> CAShapeLayer {
         let slice = CAShapeLayer()
-        slice.fillColor = UIColor.whiteColor().CGColor
+        slice.fillColor = UIColor.clearColor().CGColor
         slice.strokeColor = data.color.cgColor
         slice.lineWidth = 30.0 /// IMPROVE
         
@@ -49,16 +82,18 @@ class PieView: UIView {
         path.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         return path
     }
+    
+    func totalAmountFormat(string: String) -> NSAttributedString {
+        let components = string.componentsSeparatedByString(".")
+        let attributes = [28.0, 18.0]
+            .map { UIFont.systemFontOfSize($0) }
+            .map { [ NSFontAttributeName : $0 ] }
+        
+        return zip(components, attributes)
+            .map { component, attribute in
+                NSAttributedString(string: component, attributes: attribute)
+            }
+            |> NSAttributedString(string: ".").join
+    }
 }
 
-func degreesToRadians(float: CGFloat) -> CGFloat {
-    return float * CGFloat(M_PI) / 180.0
-}
-
-func cosf(float: CGFloat) -> CGFloat {
-    return CGFloat(cosf(Float(float)))
-}
-
-func sinf(float: CGFloat) -> CGFloat {
-    return CGFloat(sinf(Float(float)))
-}

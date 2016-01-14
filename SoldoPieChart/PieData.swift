@@ -11,6 +11,7 @@ import UIKit
 protocol SegmentData {
     var color: RGBColor { get }
     var percentageRange: DiscreteRange<Float> { get }
+    var amount: Float { get }
 }
 
 protocol ChartDataSource {
@@ -20,7 +21,6 @@ protocol ChartDataSource {
 struct PieDataSource: ChartDataSource {
     let segments: [SegmentData]
 }
-
 
 struct DiscreteRange<T: Comparable> {
     let start: T

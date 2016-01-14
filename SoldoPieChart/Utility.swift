@@ -46,3 +46,26 @@ infix operator |> { associativity left }
 func |> <T, U> (lhs: T, rhs: T -> U) -> U {
     return rhs(lhs)
 }
+
+extension NSAttributedString {
+    func join(sequence: [NSAttributedString]) -> NSAttributedString {
+        let mutableString = NSMutableAttributedString(attributedString: sequence[0])
+        for index in 1 ..< sequence.count {
+            mutableString.appendAttributedString(self)
+            mutableString.appendAttributedString(sequence[index])
+        }
+        return NSAttributedString(attributedString: mutableString)
+    }
+}
+
+func degreesToRadians(float: CGFloat) -> CGFloat {
+    return float * CGFloat(M_PI) / 180.0
+}
+
+func cosf(float: CGFloat) -> CGFloat {
+    return CGFloat(cosf(Float(float)))
+}
+
+func sinf(float: CGFloat) -> CGFloat {
+    return CGFloat(sinf(Float(float)))
+}
