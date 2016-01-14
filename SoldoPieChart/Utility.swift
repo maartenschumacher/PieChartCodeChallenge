@@ -22,6 +22,7 @@ struct RGBColor {
 
 func currencyFormat(amount: Float) -> String {
     let formatter = NSNumberFormatter()
+    formatter.currencyCode = "GBP"
     formatter.numberStyle = .CurrencyStyle
     return formatter.stringFromNumber(amount)!
 }

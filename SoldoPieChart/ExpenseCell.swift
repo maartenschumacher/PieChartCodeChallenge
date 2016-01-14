@@ -17,17 +17,16 @@ class ExpenseCell: UITableViewCell {
     
     var dataSource: ExpenseCellData!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    override func layoutSubviews() {
         icon.image = UIImage(named: dataSource.iconName)
         nameLabel.text = dataSource.name
-        amountLabel.text = "£ \(currencyFormat(dataSource.amount))"
-        percentageLabel.text = "\(Int(dataSource.percentage)) %"
+        amountLabel.text = currencyFormat(dataSource.amount)
+        percentageLabel.text = "\(Int(dataSource.percentage * 100))%"
         
         progressView.progressTintColor = dataSource.color.uiColor
         progressView.trackTintColor = UIColor.whiteColor()
-        progressView.setProgress(dataSource.percentage / 100.0, animated: true)
+        progressView.progressViewStyle = .Bar
+        progressView.setProgress(dataSource.percentage, animated: true)
     }
     
 }

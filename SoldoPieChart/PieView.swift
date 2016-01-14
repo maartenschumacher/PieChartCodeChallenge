@@ -35,7 +35,7 @@ class PieView: UIView {
         let endAngle = CGFloat(data.percentageRange.end * 360.0 - 90.0)
 
         let center = CGPointMake(self.bounds.width / 2.0, self.bounds.height / 2.0)
-        let radius = self.bounds.height / 2.0
+        let radius = self.bounds.height / 2.0 - 15
         
         let slicePath = circularPath(center, radius: radius, startAngle: degreesToRadians(startAngle), endAngle: degreesToRadians(endAngle))
         

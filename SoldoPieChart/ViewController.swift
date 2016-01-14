@@ -28,7 +28,6 @@ class ViewController: UIViewController, UITableViewDelegate {
             .map { $0 as ExpenseCellData }
             |> ExpenseTableDataSource.init
         
-        tableView.registerClass(ExpenseCell.self, forCellReuseIdentifier: ReuseIdentifiers.ExpenseCell)
         tableView.dataSource = tableDataSource
         tableView.delegate = self
     }
