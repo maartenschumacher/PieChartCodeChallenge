@@ -14,14 +14,6 @@ protocol SegmentData {
     var amount: Float { get }
 }
 
-protocol ChartDataSource {
-    var segments: [SegmentData] { get }
-}
-
-struct PieDataSource: ChartDataSource {
-    let segments: [SegmentData]
-}
-
 struct DiscreteRange<T: Comparable> {
     let start: T
     let end: T

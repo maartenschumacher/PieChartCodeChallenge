@@ -8,40 +8,19 @@
 
 import UIKit
 
+@IBDesignable
 class PieView: UIView {
-    weak var amountLabel: UILabel!
-    var dataSource: ChartDataSource?
+    @IBOutlet weak var amountLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        addAmountLabel()
+    func setData(data: [SegmentData]) {
+        self.layer.sublayers?.removeAll()
+        addLayers(data)
+        configureAmountLabel(data)
     }
     
-    func addAmountLabel() {
-        let label = UILabel(frame: CGRectZero)
-        self.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.addConstraints([
-            NSLayoutConstraint(item: label, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: label, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
-        ])
-        
-        self.amountLabel = label
-    }
-    
-    override func layoutSublayersOfLayer(layer: CALayer) {
-        if let data = self.dataSource {
-            addLayers(data)
-            configureAmountLabel(data)
-            amountLabel.layoutIfNeeded()
-        }
-    }
-    
-    func configureAmountLabel(data: ChartDataSource) {
+    func configureAmountLabel(segments: [SegmentData]) {
         amountLabel.textColor = Colors.Grey.uiColor
-        amountLabel.attributedText = data
-            .segments
+        amountLabel.attributedText = segments
             .map { $0.amount }
             .reduce(0.0) { total, amount in
                 total + amount
@@ -50,9 +29,8 @@ class PieView: UIView {
             |> totalAmountFormat
     }
     
-    func addLayers(data: ChartDataSource) {
-        data.segments
-            .map { slice($0) }
+    func addLayers(data: [SegmentData]) {
+        data.map { slice($0) }
             .forEach { slice in
                 self.layer.addSublayer(slice)
             }
@@ -60,24 +38,22 @@ class PieView: UIView {
     
     func slice(data: SegmentData) -> CAShapeLayer {
         let slice = CAShapeLayer()
+        
         slice.fillColor = UIColor.clearColor().CGColor
         slice.strokeColor = data.color.cgColor
         slice.lineWidth = 30.0 /// IMPROVE
-        
-        let startAngle = CGFloat(data.percentageRange.start * 360.0 - 90.0)
-        let endAngle = CGFloat(data.percentageRange.end * 360.0 - 90.0)
-
-        let center = CGPointMake(self.bounds.width / 2.0, self.bounds.height / 2.0)
-        let radius = self.bounds.height / 2.0 - 15
-        
-        let slicePath = circularPath(center, radius: radius, startAngle: degreesToRadians(startAngle), endAngle: degreesToRadians(endAngle))
-        
-        slice.path = slicePath.CGPath
+        slice.path = slicePath(data).CGPath
         
         return slice
     }
     
-    func circularPath(center: CGPoint, radius: CGFloat, startAngle: CGFloat, endAngle: CGFloat) -> UIBezierPath {
+    func slicePath(data: SegmentData) -> UIBezierPath {
+        let startAngle = CGFloat(data.percentageRange.start * 360.0 - 90.0)
+        let endAngle = CGFloat(data.percentageRange.end * 360.0 - 90.0)
+        
+        let center = CGPointMake(self.bounds.width / 2.0, self.bounds.height / 2.0)
+        let radius = self.bounds.height / 2.0 - 15
+        
         let path = UIBezierPath()
         path.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         return path

@@ -38,10 +38,23 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcE-11-y4O" customClass="PieView" customModule="SoldoPieChart" customModuleProvider="target">
                                         <rect key="frame" x="160" y="8" width="224" height="224"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKX-Jg-wQK">
+                                                <rect key="frame" x="91" y="101" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="NKX-Jg-wQK" firstAttribute="centerX" secondItem="BcE-11-y4O" secondAttribute="centerX" id="XEr-ki-djx"/>
                                             <constraint firstAttribute="width" secondItem="BcE-11-y4O" secondAttribute="height" multiplier="1:1" id="fvS-Kw-8bD"/>
+                                            <constraint firstItem="NKX-Jg-wQK" firstAttribute="centerY" secondItem="BcE-11-y4O" secondAttribute="centerY" id="oxr-hk-hZG"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="amountLabel" destination="NKX-Jg-wQK" id="upb-uW-yYA"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

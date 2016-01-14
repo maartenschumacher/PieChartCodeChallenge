@@ -18,11 +18,9 @@ class ViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let data = mockData |> parseJSON
+        let data = parseJSON(mockData)
         
-        pieView.dataSource = data
-            .map { $0 as SegmentData }
-            |> PieDataSource.init
+        pieView.setData(data.map {$0 as SegmentData})
         
         tableDataSource = data
             .map { $0 as ExpenseCellData }
