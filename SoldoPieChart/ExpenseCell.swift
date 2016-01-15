@@ -26,7 +26,6 @@ class ExpenseCell: UITableViewCell {
         progressView.progressTintColor = dataSource.color.uiColor
         progressView.trackTintColor = UIColor.whiteColor()
         progressView.progressViewStyle = .Bar
-        //progressView.setProgress(dataSource.percentage, animated: true)
         UIView.animateWithDuration(1.0) {
             self.progressView.setProgress(self.dataSource.percentage, animated: true)
         }

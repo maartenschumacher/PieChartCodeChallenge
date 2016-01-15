@@ -18,13 +18,3 @@ struct Expense: ExpenseCellData, SegmentData {
     let color: RGBColor
 }
 
-//struct ExpensesBalance {
-//    let expenses: [Expense]
-//    
-//    var totalAmount: Float {
-//        return expenses
-//            .reduce(0.0) { amount, expense in
-//                amount + expense.amount
-//            }
-//    }
-//}
