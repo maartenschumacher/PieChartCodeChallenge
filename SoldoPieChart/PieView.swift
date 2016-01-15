@@ -15,54 +15,38 @@ protocol SegmentData {
     var amount: Float { get }
 }
 
+protocol PieViewData {
+    var segmentData: [SegmentData] { get }
+    var totalAmountString: NSAttributedString { get }
+    func amountTextForSegment(segment: SegmentData) -> String
+}
+
 class PieView: UIView {
     @IBOutlet weak var circleView: CircleView!
     @IBOutlet weak var amountLabel: UILabel!
-    var data: [SegmentData]!
+    
+    var viewModel: PieViewData! {
+        didSet {
+            configureCircleView()
+            amountLabel.attributedText = viewModel.totalAmountString
+        }
+    }
     
     func configureCircleView() {
         circleView.touchBeganAtIndex = { [weak self] index in
             if let weakSelf = self {
-                weakSelf.amountLabel.text = weakSelf.data[index]
-                    |> weakSelf.segmentAmountFormat
+                weakSelf.amountLabel.text = weakSelf.viewModel.segmentData[index]
+                    |> weakSelf.viewModel.amountTextForSegment
             }
         }
         
         circleView.touchEnded = { [weak self] _ in
             if let weakSelf = self {
-                weakSelf.amountLabel.attributedText = weakSelf.totalAmountString
+                weakSelf.amountLabel.attributedText = weakSelf.viewModel.totalAmountString
             }
         }
         
-        circleView.data = data
+        circleView.data = viewModel.segmentData
     }
-    
-    var totalAmountString: NSAttributedString {
-        return data
-            .map { $0.amount }
-            .reduce(0.0) { total, amount in
-                total + amount
-            }
-            |> currencyFormat
-            |> totalAmountFormat
-    }
-    
-    func totalAmountFormat(string: String) -> NSAttributedString {
-        let components = string.componentsSeparatedByString(".")
-        let attributes = [28.0, 18.0]
-            .map { UIFont.systemFontOfSize($0) }
-            .map { [ NSFontAttributeName : $0 ] }
-        
-        return zip(components, attributes)
-            .map { component, attribute in
-                NSAttributedString(string: component, attributes: attribute)
-            }
-            |> NSAttributedString(string: ".").join
-    }
-    
-    func segmentAmountFormat(segment: SegmentData) -> String {
-        return "\(segment.name): \n" + "\(currencyFormat(segment.amount))"
-    }
-    
 }
 

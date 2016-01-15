@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E88B4FD1C49440D00D49B06 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88B4FC1C49440D00D49B06 /* CircleView.swift */; };
+		2E88B4FF1C49555B00D49B06 /* PieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88B4FE1C49555B00D49B06 /* PieViewModel.swift */; };
 		2EB1CFFC1C46BB7D00B4544C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1CFFB1C46BB7D00B4544C /* AppDelegate.swift */; };
 		2EB1CFFE1C46BB7D00B4544C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1CFFD1C46BB7D00B4544C /* ViewController.swift */; };
 		2EB1D0011C46BB7D00B4544C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EB1CFFF1C46BB7D00B4544C /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		2E88B4FC1C49440D00D49B06 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		2E88B4FE1C49555B00D49B06 /* PieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieViewModel.swift; sourceTree = "<group>"; };
 		2EB1CFF81C46BB7D00B4544C /* SoldoPieChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoldoPieChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EB1CFFB1C46BB7D00B4544C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EB1CFFD1C46BB7D00B4544C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				2EB1CFFB1C46BB7D00B4544C /* AppDelegate.swift */,
 				2EB1CFFD1C46BB7D00B4544C /* ViewController.swift */,
 				2EB1D01B1C46BF7600B4544C /* PieView.swift */,
+				2E88B4FE1C49555B00D49B06 /* PieViewModel.swift */,
 				2E88B4FC1C49440D00D49B06 /* CircleView.swift */,
 				2EB1D01F1C46C6AC00B4544C /* ExpenseCell.swift */,
 				2EB1D0231C46CDF100B4544C /* Expense.swift */,
@@ -226,6 +229,7 @@
 				2EB1D0241C46CDF100B4544C /* Expense.swift in Sources */,
 				2EB1CFFE1C46BB7D00B4544C /* ViewController.swift in Sources */,
 				2EB1D0201C46C6AC00B4544C /* ExpenseCell.swift in Sources */,
+				2E88B4FF1C49555B00D49B06 /* PieViewModel.swift in Sources */,
 				2EB1D0281C46D7F100B4544C /* MockData.swift in Sources */,
 				2EB1D02A1C47905900B4544C /* Zip3.swift in Sources */,
 				2EB1D0261C46D67200B4544C /* Utility.swift in Sources */,

@@ -19,9 +19,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         
         let data = parseData(mockData)
         
-        pieView.data = data.map {$0 as SegmentData}
-        pieView.configureCircleView()
-        pieView.amountLabel.attributedText = pieView.totalAmountString
+        pieView.viewModel = PieViewModel(segmentData: data.map {$0 as SegmentData})
         
         tableDataSource = data
             .map { $0 as ExpenseCellData }

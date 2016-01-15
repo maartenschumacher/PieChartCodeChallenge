@@ -12,7 +12,7 @@ class CircleView: UIView {
     var touchBeganAtIndex: (Int -> ())!
     var touchEnded: (() -> ())!
     
-    var data: [SegmentData]!
+    var data: [SegmentData] = []
     
     var segmentLayers: [CAShapeLayer]? {
         didSet {
