@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         
         let data = parseJSON(mockData)
         
-        pieView.setData(data.map {$0 as SegmentData})
+        pieView.data = data.map {$0 as SegmentData}
         
         tableDataSource = data
             .map { $0 as ExpenseCellData }
@@ -29,6 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         tableView.dataSource = tableDataSource
         tableView.delegate = self
     }
+    
 }
 
 class ExpenseTableDataSource: NSObject, UITableViewDataSource {

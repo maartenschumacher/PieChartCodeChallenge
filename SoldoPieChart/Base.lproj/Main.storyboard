@@ -48,9 +48,9 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="NKX-Jg-wQK" firstAttribute="centerX" secondItem="BcE-11-y4O" secondAttribute="centerX" id="XEr-ki-djx"/>
+                                            <constraint firstItem="NKX-Jg-wQK" firstAttribute="centerY" secondItem="BcE-11-y4O" secondAttribute="centerY" id="URs-jA-og3"/>
                                             <constraint firstAttribute="width" secondItem="BcE-11-y4O" secondAttribute="height" multiplier="1:1" id="fvS-Kw-8bD"/>
-                                            <constraint firstItem="NKX-Jg-wQK" firstAttribute="centerY" secondItem="BcE-11-y4O" secondAttribute="centerY" id="oxr-hk-hZG"/>
+                                            <constraint firstItem="NKX-Jg-wQK" firstAttribute="centerX" secondItem="BcE-11-y4O" secondAttribute="centerX" id="quX-JJ-Xdm"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="amountLabel" destination="NKX-Jg-wQK" id="upb-uW-yYA"/>

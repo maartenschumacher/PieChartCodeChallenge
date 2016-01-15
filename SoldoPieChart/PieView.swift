@@ -11,12 +11,31 @@ import UIKit
 @IBDesignable
 class PieView: UIView {
     @IBOutlet weak var amountLabel: UILabel!
+    var data: [SegmentData]!
     
-    func setData(data: [SegmentData]) {
-        self.layer.sublayers?.removeAll()
-        addLayers(data)
+    let circleWidth: CGFloat = 30.0
+    
+    var segmentLayers: [CAShapeLayer]? {
+        didSet {
+            segmentLayers?.forEach {
+                self.layer.addSublayer($0)
+            }
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.segmentLayers?.forEach {
+            if let index = self.layer.sublayers?.indexOf($0) {
+                self.layer.sublayers?.removeAtIndex(index)
+            }
+        }
+        
+        self.segmentLayers = data.map { slice($0) }
         configureAmountLabel(data)
     }
+    
     
     func configureAmountLabel(segments: [SegmentData]) {
         amountLabel.textColor = Colors.Grey.uiColor
@@ -29,19 +48,12 @@ class PieView: UIView {
             |> totalAmountFormat
     }
     
-    func addLayers(data: [SegmentData]) {
-        data.map { slice($0) }
-            .forEach { slice in
-                self.layer.addSublayer(slice)
-            }
-    }
-    
     func slice(data: SegmentData) -> CAShapeLayer {
         let slice = CAShapeLayer()
         
         slice.fillColor = UIColor.clearColor().CGColor
         slice.strokeColor = data.color.cgColor
-        slice.lineWidth = 30.0 /// IMPROVE
+        slice.lineWidth = circleWidth
         slice.path = slicePath(data).CGPath
         
         return slice
@@ -52,7 +64,7 @@ class PieView: UIView {
         let endAngle = CGFloat(data.percentageRange.end * 360.0 - 90.0)
         
         let center = CGPointMake(self.bounds.width / 2.0, self.bounds.height / 2.0)
-        let radius = self.bounds.height / 2.0 - 15
+        let radius = self.bounds.height / 2.0 - circleWidth / 2.0
         
         let path = UIBezierPath()
         path.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
