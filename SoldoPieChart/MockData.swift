@@ -9,21 +9,21 @@
 import Foundation
 
 let mockData = [
-    JSONExpense(name: "Food", iconName: ImageAssetNames.FoodIcon, amount: 292.40, color: Colors.Blue),
-    JSONExpense(name: "Clothing", iconName: ImageAssetNames.ClothingIcon, amount: 131.50, color: Colors.Red),
-    JSONExpense(name: "Airlines", iconName: ImageAssetNames.AirlinesIcon, amount: 70.30, color: Colors.Green),
-    JSONExpense(name: "Hotel", iconName: ImageAssetNames.HotelIcon, amount: 58.48, color: Colors.Yellow),
-    JSONExpense(name: "Entertainment", iconName: ImageAssetNames.EntertainmentIcon, amount: 29.12, color: Colors.Grey)
+    FakeFetchedExpense(name: "Food", iconName: ImageAssetNames.FoodIcon, amount: 292.40, color: Colors.Blue),
+    FakeFetchedExpense(name: "Clothing", iconName: ImageAssetNames.ClothingIcon, amount: 131.50, color: Colors.Red),
+    FakeFetchedExpense(name: "Airlines", iconName: ImageAssetNames.AirlinesIcon, amount: 70.30, color: Colors.Green),
+    FakeFetchedExpense(name: "Hotel", iconName: ImageAssetNames.HotelIcon, amount: 58.48, color: Colors.Yellow),
+    FakeFetchedExpense(name: "Entertainment", iconName: ImageAssetNames.EntertainmentIcon, amount: 29.12, color: Colors.Grey)
 ]
 
-struct JSONExpense {
+struct FakeFetchedExpense {
     let name: String
     let iconName: String
     let amount: Float
     let color: RGBColor
 }
 
-func parseJSON(expenses: [JSONExpense]) -> [Expense] {
+func parseData(expenses: [FakeFetchedExpense]) -> [Expense] {
     let totalAmount = expenses
         .reduce(0.0) { amount, expense in
             amount + expense.amount

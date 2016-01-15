@@ -12,11 +12,19 @@ class CircleView: UIView {
     var touchBeganAtIndex: (Int -> ())!
     var touchEnded: (() -> ())!
     
+    var data: [SegmentData]!
+    
     var segmentLayers: [CAShapeLayer]? {
         didSet {
             segmentLayers?.forEach {
                 self.layer.addSublayer($0)
             }
+        }
+    }
+    
+    override var bounds: CGRect {
+        didSet {
+            makeSegments(data)
         }
     }
     

@@ -18,9 +18,11 @@ class ViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let data = parseJSON(mockData)
+        let data = parseData(mockData)
         
         pieView.data = data.map {$0 as SegmentData}
+        pieView.configureCircleView()
+        pieView.amountLabel.attributedText = pieView.totalAmountString
         
         tableDataSource = data
             .map { $0 as ExpenseCellData }

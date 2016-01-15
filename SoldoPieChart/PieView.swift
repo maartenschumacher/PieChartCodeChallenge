@@ -20,13 +20,6 @@ class PieView: UIView {
     @IBOutlet weak var amountLabel: UILabel!
     var data: [SegmentData]!
     
-    override var bounds: CGRect {
-        didSet {
-            configureCircleView()
-            amountLabel.attributedText = totalAmountString
-        }
-    }
-    
     func configureCircleView() {
         circleView.touchBeganAtIndex = { [weak self] index in
             if let weakSelf = self {
@@ -41,7 +34,7 @@ class PieView: UIView {
             }
         }
         
-        circleView.makeSegments(data)
+        circleView.data = data
     }
     
     var totalAmountString: NSAttributedString {
