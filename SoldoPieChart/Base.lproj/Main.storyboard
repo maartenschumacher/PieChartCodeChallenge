@@ -39,6 +39,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcE-11-y4O" customClass="PieView" customModule="SoldoPieChart" customModuleProvider="target">
                                         <rect key="frame" x="160" y="8" width="224" height="224"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K7v-l9-zfA" customClass="CircleView" customModule="SoldoPieChart" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="224" height="224"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKX-Jg-wQK">
                                                 <rect key="frame" x="91" y="101" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -49,11 +53,17 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="NKX-Jg-wQK" firstAttribute="centerY" secondItem="BcE-11-y4O" secondAttribute="centerY" id="URs-jA-og3"/>
+                                            <constraint firstAttribute="trailing" secondItem="K7v-l9-zfA" secondAttribute="trailing" id="Vw1-eN-Ztm"/>
                                             <constraint firstAttribute="width" secondItem="BcE-11-y4O" secondAttribute="height" multiplier="1:1" id="fvS-Kw-8bD"/>
+                                            <constraint firstItem="K7v-l9-zfA" firstAttribute="top" secondItem="BcE-11-y4O" secondAttribute="top" id="m2B-MW-iVC"/>
+                                            <constraint firstItem="K7v-l9-zfA" firstAttribute="leading" secondItem="BcE-11-y4O" secondAttribute="leading" id="pk4-dB-6Tz"/>
                                             <constraint firstItem="NKX-Jg-wQK" firstAttribute="centerX" secondItem="BcE-11-y4O" secondAttribute="centerX" id="quX-JJ-Xdm"/>
+                                            <constraint firstAttribute="bottom" secondItem="K7v-l9-zfA" secondAttribute="bottom" id="r7s-cR-KMC"/>
+                                            <constraint firstItem="K7v-l9-zfA" firstAttribute="width" secondItem="K7v-l9-zfA" secondAttribute="height" multiplier="1:1" id="uue-EB-858"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="amountLabel" destination="NKX-Jg-wQK" id="upb-uW-yYA"/>
+                                            <outlet property="circleView" destination="K7v-l9-zfA" id="ggI-l8-4Lg"/>
                                         </connections>
                                     </view>
                                 </subviews>

@@ -29,7 +29,6 @@ class ViewController: UIViewController, UITableViewDelegate {
         tableView.dataSource = tableDataSource
         tableView.delegate = self
     }
-    
 }
 
 class ExpenseTableDataSource: NSObject, UITableViewDataSource {
