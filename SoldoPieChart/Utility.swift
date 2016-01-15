@@ -20,6 +20,11 @@ struct RGBColor {
     }
 }
 
+struct DiscreteRange<T: Comparable> {
+    let start: T
+    let end: T
+}
+
 func currencyFormat(amount: Float) -> String {
     let formatter = NSNumberFormatter()
     formatter.currencyCode = "GBP"

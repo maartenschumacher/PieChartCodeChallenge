@@ -8,12 +8,20 @@
 
 import UIKit
 
-@IBDesignable
+protocol SegmentData {
+    var name: String { get }
+    var color: RGBColor { get }
+    var percentageRange: DiscreteRange<Float> { get }
+    var amount: Float { get }
+}
+
 class PieView: UIView {
-    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!     
     var data: [SegmentData]!
     
     let circleWidth: CGFloat = 30.0
+    
+    var once: Bool = false
     
     var segmentLayers: [CAShapeLayer]? {
         didSet {
@@ -23,23 +31,22 @@ class PieView: UIView {
         }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        self.segmentLayers?.forEach {
-            if let index = self.layer.sublayers?.indexOf($0) {
-                self.layer.sublayers?.removeAtIndex(index)
+    override var bounds: CGRect {
+        didSet {
+            self.segmentLayers?.forEach {
+                if let index = self.layer.sublayers?.indexOf($0) {
+                    self.layer.sublayers?.removeAtIndex(index)
+                }
             }
+            
+            self.segmentLayers = data.map { slice($0) }
+            
+            amountLabel.attributedText = totalAmountString
         }
-        
-        self.segmentLayers = data.map { slice($0) }
-        configureAmountLabel(data)
     }
     
-    
-    func configureAmountLabel(segments: [SegmentData]) {
-        amountLabel.textColor = Colors.Grey.uiColor
-        amountLabel.attributedText = segments
+    var totalAmountString: NSAttributedString {
+        return data
             .map { $0.amount }
             .reduce(0.0) { total, amount in
                 total + amount
@@ -51,23 +58,31 @@ class PieView: UIView {
     func slice(data: SegmentData) -> CAShapeLayer {
         let slice = CAShapeLayer()
         
-        slice.fillColor = UIColor.clearColor().CGColor
-        slice.strokeColor = data.color.cgColor
-        slice.lineWidth = circleWidth
+        slice.fillColor = data.color.cgColor
+        slice.strokeColor = UIColor.blackColor().CGColor
+        slice.lineWidth = 0.0
         slice.path = slicePath(data).CGPath
         
         return slice
     }
     
     func slicePath(data: SegmentData) -> UIBezierPath {
-        let startAngle = CGFloat(data.percentageRange.start * 360.0 - 90.0)
-        let endAngle = CGFloat(data.percentageRange.end * 360.0 - 90.0)
-        
         let center = CGPointMake(self.bounds.width / 2.0, self.bounds.height / 2.0)
-        let radius = self.bounds.height / 2.0 - circleWidth / 2.0
+        let radius = self.bounds.height / 2.0
+        
+        let startAngle = degreesToRadians(CGFloat(data.percentageRange.start * 360.0 - 90.0))
+        let endAngle = degreesToRadians(CGFloat(data.percentageRange.end * 360.0 - 90.0))
+        
+        let startOuterPoint = CGPointMake(center.x + radius * cosf(startAngle), center.y + radius * sinf(startAngle))
+        let endInnerPoint = CGPointMake(center.x + (radius - circleWidth) * cosf(endAngle), center.y + (radius - circleWidth) * sinf(endAngle))
         
         let path = UIBezierPath()
+        path.moveToPoint(startOuterPoint)
         path.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        path.addLineToPoint(endInnerPoint)
+        path.addArcWithCenter(center, radius: radius - circleWidth, startAngle: endAngle, endAngle: startAngle, clockwise: false)
+        path.addLineToPoint(startOuterPoint)
+        
         return path
     }
     
@@ -83,5 +98,36 @@ class PieView: UIView {
             }
             |> NSAttributedString(string: ".").join
     }
+    
+    func segmentAmountFormat(segment: SegmentData) -> String {
+        return "\(segment.name): \n" + "\(currencyFormat(segment.amount))"
+    }
+    
+    func segmentForLayer(layer: CAShapeLayer) -> SegmentData? {
+        return segmentLayers?
+            .indexOf(layer)
+            .map { data[$0] }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let point = touches.first!.locationInView(self)
+        
+        segmentLayers?.forEach { layer in
+            if CGPathContainsPoint(layer.path, nil, point, false) {
+                amountLabel.text = (layer
+                    |> segmentForLayer)
+                    .map { segmentAmountFormat($0) }
+                
+                segmentLayers?.filter { $0 != layer }
+                    .forEach { $0.opacity = 0.5 }
+            }
+        }
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        amountLabel.attributedText = totalAmountString
+        segmentLayers?.forEach { $0.opacity = 1.0 }
+    }
+    
 }
 

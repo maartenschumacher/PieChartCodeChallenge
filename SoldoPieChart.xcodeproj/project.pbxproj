@@ -14,7 +14,6 @@
 		2EB1D0061C46BB7D00B4544C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EB1D0041C46BB7D00B4544C /* LaunchScreen.storyboard */; };
 		2EB1D0111C46BB7D00B4544C /* SoldoPieChartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1D0101C46BB7D00B4544C /* SoldoPieChartTests.swift */; };
 		2EB1D01C1C46BF7600B4544C /* PieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1D01B1C46BF7600B4544C /* PieView.swift */; };
-		2EB1D01E1C46BF8100B4544C /* PieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1D01D1C46BF8100B4544C /* PieData.swift */; };
 		2EB1D0201C46C6AC00B4544C /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1D01F1C46C6AC00B4544C /* ExpenseCell.swift */; };
 		2EB1D0221C46CD7700B4544C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1D0211C46CD7700B4544C /* Constants.swift */; };
 		2EB1D0241C46CDF100B4544C /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1D0231C46CDF100B4544C /* Expense.swift */; };
@@ -45,7 +44,6 @@
 		2EB1D0101C46BB7D00B4544C /* SoldoPieChartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldoPieChartTests.swift; sourceTree = "<group>"; };
 		2EB1D0121C46BB7D00B4544C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EB1D01B1C46BF7600B4544C /* PieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieView.swift; sourceTree = "<group>"; };
-		2EB1D01D1C46BF8100B4544C /* PieData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieData.swift; sourceTree = "<group>"; };
 		2EB1D01F1C46C6AC00B4544C /* ExpenseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseCell.swift; sourceTree = "<group>"; };
 		2EB1D0211C46CD7700B4544C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2EB1D0231C46CDF100B4544C /* Expense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				2EB1CFFB1C46BB7D00B4544C /* AppDelegate.swift */,
 				2EB1CFFD1C46BB7D00B4544C /* ViewController.swift */,
 				2EB1D01B1C46BF7600B4544C /* PieView.swift */,
-				2EB1D01D1C46BF8100B4544C /* PieData.swift */,
 				2EB1D01F1C46C6AC00B4544C /* ExpenseCell.swift */,
 				2EB1D0231C46CDF100B4544C /* Expense.swift */,
 				2EB1D0271C46D7F100B4544C /* MockData.swift */,
@@ -224,7 +221,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EB1D0241C46CDF100B4544C /* Expense.swift in Sources */,
-				2EB1D01E1C46BF8100B4544C /* PieData.swift in Sources */,
 				2EB1CFFE1C46BB7D00B4544C /* ViewController.swift in Sources */,
 				2EB1D0201C46C6AC00B4544C /* ExpenseCell.swift in Sources */,
 				2EB1D0281C46D7F100B4544C /* MockData.swift in Sources */,
@@ -420,6 +416,7 @@
 				2EB1D0171C46BB7D00B4544C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2EB1D0181C46BB7D00B4544C /* Build configuration list for PBXNativeTarget "SoldoPieChartTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +425,7 @@
 				2EB1D01A1C46BB7D00B4544C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
