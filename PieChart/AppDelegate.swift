@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  SoldoPieChart
+//  PieChart
 //
 //  Created by Maarten Schumacher on 13/01/16.
 //  Copyright © 2016 Maarten Schumacher. All rights reserved.

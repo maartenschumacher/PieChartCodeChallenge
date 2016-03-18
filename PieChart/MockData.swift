@@ -1,6 +1,6 @@
 //
 //  MockData.swift
-//  SoldoPieChart
+//  PieChart
 //
 //  Created by Maarten Schumacher on 13/01/16.
 //  Copyright © 2016 Maarten Schumacher. All rights reserved.
@@ -45,7 +45,7 @@ func parseData(expenses: [FakeFetchedExpense]) -> [Expense] {
             )
         }
     
-    return zip3(expenses, b: percentages, c: percentageRanges)
+    return zip3(expenses, percentages, percentageRanges)
         .map { expense, percentage, percentageRange in
             Expense(
                 name: expense.name,

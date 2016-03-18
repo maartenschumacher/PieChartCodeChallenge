@@ -1,6 +1,6 @@
 //
 //  Utility.swift
-//  SoldoPieChart
+//  PieChart
 //
 //  Created by Maarten Schumacher on 13/01/16.
 //  Copyright © 2016 Maarten Schumacher. All rights reserved.
@@ -32,18 +32,21 @@ func currencyFormat(amount: Float) -> String {
     return formatter.stringFromNumber(amount)!
 }
 
+extension Array {
+    func fAppend(element: Element) -> [Element] {
+        var array = self
+        array.append(element)
+        return array
+    }
+}
+
 extension SequenceType {
     func scan<T>(initial: T, combine: (T, Self.Generator.Element) -> T) -> [T] {
-        var state = initial
-        var result = [T]()
-        
-        for element in self {
-            let newState = combine(state, element)
-            result.append(newState)
-            state = newState
+        return self.reduce([]) { state, element in
+            state.fAppend(
+                combine(state.last ?? initial, element)
+            )
         }
-        
-        return result
     }
 }
 
